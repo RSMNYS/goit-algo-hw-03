@@ -8,7 +8,7 @@ def koch_curve(t, order, size):
             koch_curve(t, order - 1, size / 3)
             t.left(angle)
 
-def draw_koch_curve(order, size=300):
+def draw_koch(order, size=300):
     window = turtle.Screen()
     window.bgcolor("white")
 
@@ -24,5 +24,17 @@ def draw_koch_curve(order, size=300):
 
     window.mainloop()
 
-# Виклик функції
-draw_koch_curve(3)
+if __name__ == "__main__":
+    # Get user input for the recursion level
+    while True:
+        try:
+            order = int(input("Please enter the recursion level (order) for the Koch snowflake: "))
+            if order < 0:
+                print("Please enter a non-negative integer for the order.")
+            else:
+                break
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+
+    # Call the function with user input
+    draw_koch(order)

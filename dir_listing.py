@@ -1,3 +1,4 @@
+import argparse
 import os
 import shutil
 
@@ -38,4 +39,20 @@ def copy_file_to_extension_folder(file_path, destination_path):
         print(f'Copied {file_path} to {dst_file_path}')
     except IOError as e:
         print(f"Error copying {file_path} to {dst_file_path}: {e}")
+
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-s', '--src', type=str, help='Source directory')
+    parser.add_argument('-d', '--dst', type=str, help='Destination directory')
+
+    args = parser.parse_args()
+
+    source_directory = args.src if args.src else os.getcwd()
+    current_directory = os.getcwd()
+    parent_directory_name = os.path.dirname(current_directory)
+    destination_directory = args.dst if args.dst else f'{parent_directory_name}/dist'
+
+    handle_directory(source_directory, destination_directory)
         
