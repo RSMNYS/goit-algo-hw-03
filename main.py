@@ -17,6 +17,7 @@ def main():
     destination_directory = args.dst if args.dst else f'{parent_directory_name}/dist'
 
     handle_directory(source_directory, destination_directory)
+
    
 if __name__ == '__main__':
     main()
